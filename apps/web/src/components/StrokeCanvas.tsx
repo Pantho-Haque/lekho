@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { strokeToPath, type Point, type Stroke, type StrokeGuide } from 'bangla-strokes';
+import { strokeToPath, type Point, type Stroke, type StrokeGuide } from '@pantho075/matra';
 import { bn } from '../lib/strings';
 
 export type CanvasMode = 'watch' | 'trace' | 'free';

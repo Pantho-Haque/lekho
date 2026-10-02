@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { guidesFromPoints, inferDirection, listLetters, scoreStroke, simplify, type Letter, type Stroke, type StrokeScore } from 'bangla-strokes';
+import { guidesFromPoints, inferDirection, listLetters, scoreStroke, simplify, type Letter, type Stroke, type StrokeScore } from '@pantho075/matra';
 import StrokeCanvas from '../components/StrokeCanvas';
 import glyphs from '../dev/glyphs.json';
 
@@ -7,7 +7,7 @@ const GLYPHS = glyphs as Record<string, string>;
 
 /**
  * DEV-ONLY stroke authoring tool. Draw over the faint font glyph, then "Copy TS" and paste the
- * object into packages/bangla-strokes/src/data/*.ts. Strokes are the stored constants; the font is
+ * object into packages/matra/src/data/*.ts. Strokes are the stored constants; the font is
  * only a visual guide here.
  */
 export default function Editor() {

@@ -2,10 +2,10 @@
 #   node scripts/skeleton.mjs "<consonants>" consonant > /tmp/consonants.ts
 #   node scripts/skeleton.mjs "০১২৩৪৫৬৭৮৯" digit > /tmp/digits.ts
 #   python3 scripts/curate.py
-#   (cd ../../packages/bangla-strokes && node scripts/annotate.mjs)   # adds order/direction to the bare arrays
+#   (cd ../../packages/matra && node scripts/annotate.mjs)   # adds order/direction to the bare arrays
 import re, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
-PKG = os.path.join(HERE, '../../../packages/bangla-strokes/src/data')
+PKG = os.path.join(HERE, '../../../packages/matra/src/data')
 names = {
  'ক':('ক','kô'),'খ':('খ','khô'),'গ':('গ','gô'),'ঘ':('ঘ','ghô'),'ঙ':('ঙ (উঁঅ)','ṅô'),
  'চ':('চ','cô'),'ছ':('ছ','chô'),'জ':('বর্গীয় জ','jô'),'ঝ':('ঝ','jhô'),'ঞ':('ঞ (ইঁঅ)','ñô'),

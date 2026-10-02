@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import type { Lesson } from 'bangla-strokes';
+import type { Lesson } from '@pantho075/matra';
 import StrokeCanvas from './StrokeCanvas';
 import { S } from '../lib/strings';
 

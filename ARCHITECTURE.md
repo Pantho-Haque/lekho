@@ -12,7 +12,7 @@ trace them with numbers, trace without numbers, assemble the character from part
 memory. Every step rests on one thing: **per-stroke centreline data for the character**. Kanji has
 that for free (KanjiVG). Bengali does not. So this project is two things:
 
-1. `bangla-strokes`: an npm package that **owns the stroke data** and the **math that compares a
+1. `@pantho075/matra`: an npm package that **owns the stroke data** and the **math that compares a
    drawn stroke to a stored one**. No UI, no browser APIs.
 2. `lekho` web app: a React UI that renders those strokes, collects finger input, and asks the
    package "was that right?".
@@ -30,7 +30,7 @@ lekho/                              npm workspaces monorepo
 ├── README.md                       quick start
 ├── ARCHITECTURE.md                 this file
 │
-├── packages/bangla-strokes/        ── THE PACKAGE (publishable) ──
+├── packages/matra/        ── THE PACKAGE (publishable) ──
 │   ├── package.json                name, exports (ESM + CJS + .d.ts), files: ["dist", "README.md"]
 │   ├── tsup.config.ts              bundles src/index.ts → dist/index.{js,cjs,d.ts}
 │   ├── README.md                   public API docs
@@ -50,7 +50,7 @@ lekho/                              npm workspaces monorepo
 │   └── test/                       vitest: geometry, score, recognize, guides + data sanity
 │
 └── apps/web/                       ── THE APP (Vite + React + Tailwind) ──
-    ├── vite.config.ts              dev-time alias: bangla-strokes → ../../packages/bangla-strokes/src
+    ├── vite.config.ts              dev-time alias: @pantho075/matra → ../../packages/matra/src
     ├── index.html                  <html lang="bn">
     ├── src/
     │   ├── main.tsx                router: "/", "/learn/:char", "/editor" (DEV only)
@@ -156,7 +156,7 @@ Example, অ (4 strokes):
 
 ---
 
-## 4. The package: `bangla-strokes`
+## 4. The package: `@pantho075/matra`
 
 ### 4.1 `geometry.ts`: pure math over point arrays
 
@@ -227,7 +227,7 @@ is re-exported there so tsup produces one bundle.
 - `tsup` emits ESM (`dist/index.js`), CJS (`dist/index.cjs`), and types. `package.json#exports`
   points at them; `"sideEffects": false` lets bundlers tree-shake.
 - `npm pack --dry-run` ships 8 files: dist + README + package.json.
-- `prepublishOnly` runs build + tests. Publish with `npm publish -w packages/bangla-strokes --access public`.
+- `prepublishOnly` runs build + tests. Publish with `npm publish -w packages/matra --access public`.
 
 ### 4.6 Tests (`vitest`)
 
@@ -245,7 +245,7 @@ Vite + React 19 + TypeScript + Tailwind v4 (via `@tailwindcss/vite`) + `react-ro
 Theme colours live in `index.css` under `@theme` (bg, panel, cream card, ink, ghost, accent green,
 active red) so Tailwind utilities like `fill-cream` and `stroke-active` exist.
 
-`vite.config.ts` aliases `bangla-strokes` to the package **source** during `vite dev` only. That is
+`vite.config.ts` aliases `@pantho075/matra` to the package **source** during `vite dev` only. That is
 what makes editing `data/vowels.ts` hot-reload in the app. `vite build` uses the package's built
 `dist`, exactly like a real consumer would.
 
@@ -352,7 +352,7 @@ src/dev/glyphs.json        { "অ": "M… Z", … }  each outline fitted to the 
         │  onStroke → simplify(points, 1.0) → appended; reorder/delete/reverse per stroke
         │  "test" toggle switches to trace mode and prints the five sub-scores per attempt (for tuning)
         ▼
-"Copy TS"                  a Letter literal → paste into packages/bangla-strokes/src/data/vowels.ts
+"Copy TS"                  a Letter literal → paste into packages/matra/src/data/vowels.ts
 ```
 
 The 11 vowels were produced by reading coordinates off the gridded previews and typing them, then
@@ -405,7 +405,7 @@ AUTHOR TIME                                   LEARN TIME
 font outline ─► /editor ─► Copy TS            Learn.tsx: getLetter('অ')
                               │                         │
                               ▼                         ▼
-          packages/bangla-strokes/src/data/vowels.ts    StrokeCanvas renders strokes via strokeToPath()
+          packages/matra/src/data/vowels.ts    StrokeCanvas renders strokes via strokeToPath()
                               │                         │
                               ▼                         ▼
                    tsup → dist (npm)          finger moves → points in 0–100 box → onStroke(points)
@@ -447,7 +447,7 @@ ranker, adequate for a quiz among known letters, not for free-form OCR.
 ```bash
 npm install
 npm test                                   # package unit tests
-npm run build -w packages/bangla-strokes   # dist/
+npm run build -w packages/matra   # dist/
 npm run dev                                # app on :5173 (aliases package source → HMR on data edits)
 npm run build -w apps/web                  # production bundle
 
@@ -461,16 +461,16 @@ node scripts/e2e.mjs অ http://localhost:5173
 
 | file | one line |
 |---|---|
-| `packages/bangla-strokes/src/types.ts` | shared types |
-| `packages/bangla-strokes/src/geometry.ts` | resample / simplify / normalize / strokeToPath |
-| `packages/bangla-strokes/src/score.ts` | `scoreStroke`, `matchLetter`, `DEFAULT_TOLERANCE`, windowed projection |
-| `packages/bangla-strokes/src/recognize.ts` | `recognize` |
-| `packages/bangla-strokes/src/letters.ts` | lookups |
-| `packages/bangla-strokes/src/direction.ts` | `inferDirection`, `opposite`, `orientedPoints` (direction field wins) |
-| `packages/bangla-strokes/src/guides.ts` | `getLesson`, `getStrokeGuides`, `guidesFromPoints` |
-| `packages/bangla-strokes/scripts/annotate.mjs` | arrays → `{order, direction, points}` |
-| `packages/bangla-strokes/src/data/{vowels,consonants,digits}.ts` | the stroke constants |
-| `packages/bangla-strokes/test/*.test.ts` | vitest suites |
+| `packages/matra/src/types.ts` | shared types |
+| `packages/matra/src/geometry.ts` | resample / simplify / normalize / strokeToPath |
+| `packages/matra/src/score.ts` | `scoreStroke`, `matchLetter`, `DEFAULT_TOLERANCE`, windowed projection |
+| `packages/matra/src/recognize.ts` | `recognize` |
+| `packages/matra/src/letters.ts` | lookups |
+| `packages/matra/src/direction.ts` | `inferDirection`, `opposite`, `orientedPoints` (direction field wins) |
+| `packages/matra/src/guides.ts` | `getLesson`, `getStrokeGuides`, `guidesFromPoints` |
+| `packages/matra/scripts/annotate.mjs` | arrays → `{order, direction, points}` |
+| `packages/matra/src/data/{vowels,consonants,digits}.ts` | the stroke constants |
+| `packages/matra/test/*.test.ts` | vitest suites |
 | `apps/web/src/components/StrokeCanvas.tsx` | SVG card: ghost, ink, numbers, animation, pointer capture |
 | `apps/web/src/components/PartsBuilder.tsx` | tiles → order check |
 | `apps/web/src/pages/Learn.tsx` | step machine, calls `scoreStroke` |

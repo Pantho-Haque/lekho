@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getLesson, listLetters, scoreStroke, type Stroke } from 'bangla-strokes';
+import { getLesson, listLetters, scoreStroke, type Stroke } from '@pantho075/matra';
 import StrokeCanvas from '../components/StrokeCanvas';
 import PartsBuilder from '../components/PartsBuilder';
 import { S, DIRECTION, bn } from '../lib/strings';

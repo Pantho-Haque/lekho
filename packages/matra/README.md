@@ -1,15 +1,15 @@
-# bangla-strokes
+# @pantho075/matra
 
 Stroke-order data and a deterministic, dependency-free heuristic for scoring and recognising
 handwritten **Bengali (Bangla) letters**. No DOM, no canvas: runs in the browser, Node, workers and
 React Native.
 
 ```bash
-npm i bangla-strokes
+npm i @pantho075/matra
 ```
 
 ```ts
-import { getLesson, getStrokes, scoreStroke, recognize } from 'bangla-strokes';
+import { getLesson, getStrokes, scoreStroke, recognize } from '@pantho075/matra';
 
 const lesson = getLesson('অ');
 lesson.strokes[0];

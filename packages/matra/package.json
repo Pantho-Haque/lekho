@@ -1,5 +1,5 @@
 {
-  "name": "bangla-strokes",
+  "name": "@pantho075/matra",
   "version": "0.1.0",
   "description": "Stroke-order data and heuristic handwriting scoring/recognition for Bengali (Bangla) letters. Zero dependencies, no DOM.",
   "license": "MIT",
@@ -14,9 +14,19 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "sideEffects": false,
-  "keywords": ["bangla", "bengali", "handwriting", "stroke-order", "recognition", "education"],
+  "keywords": [
+    "bangla",
+    "bengali",
+    "handwriting",
+    "stroke-order",
+    "recognition",
+    "education"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
@@ -26,5 +36,14 @@
     "tsup": "^8.3.0",
     "typescript": "^5.6.0",
     "vitest": "^2.1.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pantho075/lekho.git",
+    "directory": "packages/matra"
+  },
+  "homepage": "https://github.com/pantho075/lekho/tree/main/packages/matra"
 }

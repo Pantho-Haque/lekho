@@ -2,7 +2,7 @@
 // usage: node scripts/e2e.mjs [char] [baseUrl]   (dev server must be running)
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
-import { resample } from '../../../packages/bangla-strokes/dist/index.js';
+import { resample } from '../../../packages/matra/dist/index.js';
 
 const CHAR = process.argv[2] ?? 'অ';
 const BASE = process.argv[3] ?? 'http://localhost:5177';
@@ -36,7 +36,7 @@ try {
   await shot('0-home');
 
   await send('Page.navigate', { url: `${BASE}/learn/${encodeURIComponent(CHAR)}` }); await sleep(2500);
-  const strokes = JSON.parse(await evaluate(`JSON.stringify((${(await evaluate('typeof window.__strokes')) === 'undefined' ? 'null' : 'window.__strokes'}))`)) ?? (await import('../../../packages/bangla-strokes/dist/index.js')).getStrokes(CHAR);
+  const strokes = JSON.parse(await evaluate(`JSON.stringify((${(await evaluate('typeof window.__strokes')) === 'undefined' ? 'null' : 'window.__strokes'}))`)) ?? (await import('../../../packages/matra/dist/index.js')).getStrokes(CHAR);
   await shot('1-watch');
   const text = () => evaluate('document.body.innerText');
   if (!(await text()).includes('কীভাবে লেখা হয়')) fail('watch step title missing');

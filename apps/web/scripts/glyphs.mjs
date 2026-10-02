@@ -38,7 +38,7 @@ writeFileSync(path.join(here, '../src/dev/glyphs.json'), JSON.stringify(glyphs))
 console.log('glyphs.json written for', CHARS.join(''));
 
 // previews
-const { listLetters, strokeToPath } = await import('../../../packages/bangla-strokes/dist/index.js');
+const { listLetters, strokeToPath } = await import('../../../packages/matra/dist/index.js');
 const out = '/tmp/lekho-preview';
 mkdirSync(out, { recursive: true });
 for (const L of listLetters()) {

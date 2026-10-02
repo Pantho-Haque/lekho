@@ -1,4 +1,4 @@
-import type { Direction } from 'bangla-strokes';
+import type { Direction } from '@pantho075/matra';
 
 export const S = {
   appName: 'লেখো',

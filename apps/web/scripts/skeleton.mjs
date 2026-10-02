@@ -6,7 +6,7 @@ import opentype from 'opentype.js';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { simplify, strokeToPath, strokeLength } from '../../../packages/bangla-strokes/dist/index.js';
+import { simplify, strokeToPath, strokeLength } from '../../../packages/matra/dist/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const buf = readFileSync(path.join(here, '../dev/NotoSansBengali-Regular.ttf'));

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { listLetters, type LetterGroup } from 'bangla-strokes';
+import { listLetters, type LetterGroup } from '@pantho075/matra';
 import { S, bn } from '../lib/strings';
 import { doneSet } from '../lib/progress';
 
