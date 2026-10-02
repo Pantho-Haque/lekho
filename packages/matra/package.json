@@ -1,6 +1,6 @@
 {
   "name": "@pantho075/matra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stroke-order data and heuristic handwriting scoring/recognition for Bengali (Bangla) letters. Zero dependencies, no DOM.",
   "license": "MIT",
   "type": "module",
@@ -44,8 +44,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pantho075/lekho.git",
+    "url": "git+https://github.com/Pantho-Haque/lekho.git",
     "directory": "packages/matra"
   },
-  "homepage": "https://github.com/pantho075/lekho/tree/main/packages/matra"
+  "homepage": "https://lekho-matra.vercel.app"
 }

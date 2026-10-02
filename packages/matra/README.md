@@ -4,6 +4,8 @@ Stroke-order data and a deterministic, dependency-free heuristic for scoring and
 handwritten **Bengali (Bangla) letters**. No DOM, no canvas: runs in the browser, Node, workers and
 React Native.
 
+**Live preview:** https://lekho-matra.vercel.app
+
 ```bash
 npm i @pantho075/matra
 ```
